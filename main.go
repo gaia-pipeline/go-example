@@ -7,7 +7,7 @@ import (
 	sdk "github.com/gaia-pipeline/gosdk"
 )
 
-func CreateUser() error {
+func CreateUser(args sdk.Arguments) error {
 	log.Println("CreateUser has been started!")
 
 	// lets sleep to simulate that we do something
@@ -18,7 +18,7 @@ func CreateUser() error {
 	return nil
 }
 
-func MigrateDB() error {
+func MigrateDB(args sdk.Arguments) error {
 	log.Println("MigrateDB has been started!")
 
 	// lets sleep to simulate that we do something
@@ -29,7 +29,7 @@ func MigrateDB() error {
 	return nil
 }
 
-func CreateNamespace() error {
+func CreateNamespace(args sdk.Arguments) error {
 	log.Println("CreateNamespace has been started!")
 
 	// lets sleep to simulate that we do something
@@ -40,7 +40,7 @@ func CreateNamespace() error {
 	return nil
 }
 
-func CreateDeployment() error {
+func CreateDeployment(args sdk.Arguments) error {
 	log.Println("CreateDeployment has been started!")
 
 	// lets sleep to simulate that we do something
@@ -51,7 +51,7 @@ func CreateDeployment() error {
 	return nil
 }
 
-func CreateService() error {
+func CreateService(args sdk.Arguments) error {
 	log.Println("CreateService has been started!")
 
 	// lets sleep to simulate that we do something
@@ -62,7 +62,7 @@ func CreateService() error {
 	return nil
 }
 
-func CreateIngress() error {
+func CreateIngress(args sdk.Arguments) error {
 	log.Println("CreateIngress has been started!")
 
 	// lets sleep to simulate that we do something
@@ -73,7 +73,7 @@ func CreateIngress() error {
 	return nil
 }
 
-func Cleanup() error {
+func Cleanup(args sdk.Arguments) error {
 	log.Println("Cleanup has been started!")
 
 	// lets sleep to simulate that we do something
