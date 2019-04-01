@@ -2,75 +2,49 @@ package main
 
 import (
 	"log"
-	"time"
 
 	sdk "github.com/gaia-pipeline/gosdk"
 )
 
-func CreateUser(args sdk.Arguments) error {
-	log.Println("CreateUser has been started!")
-
-	// lets sleep to simulate that we do something
-	time.Sleep(5 * time.Second)
-	log.Println("CreateUser has been finished!")
-	return nil
-}
-
-func MigrateDB(args sdk.Arguments) error {
-	log.Println("MigrateDB has been started!")
-
-	// lets sleep to simulate that we do something
-	time.Sleep(5 * time.Second)
-	log.Println("MigrateDB has been finished!")
-	return nil
-}
-
-func CreateNamespace(args sdk.Arguments) error {
-	log.Println("CreateNamespace has been started!")
-
-	// lets sleep to simulate that we do something
-	time.Sleep(5 * time.Second)
-	log.Println("CreateNamespace has been finished!")
-	return nil
-}
-
-func CreateDeployment(args sdk.Arguments) error {
-	log.Println("CreateDeployment has been started!")
-
-	// lets sleep to simulate that we do something
-	time.Sleep(5 * time.Second)
-	log.Println("CreateDeployment has been finished!")
-	return nil
-}
-
-func CreateService(args sdk.Arguments) error {
-	log.Println("CreateService has been started!")
-
-	// lets sleep to simulate that we do something
-	time.Sleep(5 * time.Second)
-	log.Println("CreateService has been finished!")
-	return nil
-}
-
-func CreateIngress(args sdk.Arguments) error {
-	log.Println("CreateIngress has been started!")
-
-	// lets sleep to simulate that we do something
-	time.Sleep(5 * time.Second)
-	log.Println("CreateIngress has been finished!")
-	return nil
-}
-
-func Cleanup(args sdk.Arguments) error {
-	log.Println("Cleanup has been started!")
-
-	// lets sleep to simulate that we do something
-	time.Sleep(5 * time.Second)
-	log.Println("Cleanup has been finished!")
+// PrintParam prints out all given params.
+func PrintParam(args sdk.Arguments) error {
+	for _, arg := range args {
+		log.Printf("Key: %s;Value: %s;\n", arg.Key, arg.Value)
+	}
 	return nil
 }
 
 func main() {
+	jobs := sdk.Jobs{
+		sdk.Job{
+			Handler:     PrintParam,
+			Title:       "Print Parameters",
+			Description: "This job prints out all given params.",
+			Args: sdk.Arguments{
+				sdk.Argument{
+					Description: "Username for the database schema:",
+					// TextFieldInp displays a text field in the UI.
+					// You can also use sdk.TextAreaInp for text area,
+					// sdk.BoolInp for boolean input.
+					Type: sdk.TextFieldInp,
+					Key:  "username",
+				},
+				sdk.Argument{
+					Description: "Description for username:",
+					// TextFieldInp displays a text field in the UI.
+					// You can also use sdk.TextAreaInp for text area and
+					// sdk.BoolInp for boolean input.
+					Type: sdk.TextAreaInp,
+					Key:  "usernamedesc",
+				},
+				sdk.Argument{
+					Type: sdk.VaultInp,
+					Key:  "userpassword",
+				},
+			},
+		},
+	}
+
 	// Serve
 	if err := sdk.Serve(jobs); err != nil {
 		panic(err)
