@@ -9,6 +9,13 @@ var jobs = sdk.Jobs{
 		Handler:     CreateUser,
 		Title:       "Create DB User",
 		Description: "Creates a database user with least privileged permissions.",
+		Args: sdk.Arguments{
+			{
+				Description: "Test Parameter",
+				Key:         "Username",
+				Type:        sdk.TextFieldInp,
+			},
+		},
 	},
 	sdk.Job{
 		Handler:     MigrateDB,

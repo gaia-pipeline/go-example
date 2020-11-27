@@ -9,9 +9,9 @@ import (
 
 func CreateUser(args sdk.Arguments) error {
 	log.Println("CreateUser has been started!")
-	log.Println("Update!")
-	log.Println("Update2!")
-
+	for _, a := range args {
+		log.Printf("Key: %s, Description: %s, Value: %s", a.Key, a.Description, a.Value)
+	}
 	// lets sleep to simulate that we do something
 	time.Sleep(5 * time.Second)
 	log.Println("CreateUser has been finished!")
